@@ -13,12 +13,6 @@ import {
   Headphones,
   Shield,
   Star,
-  Facebook,
-  Instagram,
-  Youtube,
-  MapPin,
-  Phone,
-  Mail,
 } from "lucide-react";
 import { Header } from "gnm/layouts/Header";
 import { Footer } from "gnm/layouts/Footer";
@@ -434,51 +428,51 @@ const VegetablesBanner: React.FC<VegetablesBannerProps> = ({
 };
 
 // Alternative Compact Version
-const CompactVegetablesBanner: React.FC<VegetablesBannerProps> = ({
-  basketImage = "/vegetables-basket.png",
-  title = "SUPER SALE VEGETABLES",
-  description = "Don't Miss Out On Our Super Sale! Fresh, High-Quality Vegetables At Unbeatable Prices.",
-  buttonText = "Shop Now",
-  buttonLink = "/vegetables",
-}) => {
-  return (
-    <section className="py-6 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-green-400 to-teal-600 rounded-xl overflow-hidden shadow-lg">
-          <div className="grid grid-cols-1 md:grid-cols-3 items-center">
-            {/* Image Section */}
-            <div className="relative p-6 flex justify-center">
-              <div className="w-32 h-32 md:w-40 md:h-40 relative">
-                <div className="absolute inset-0 bg-green-200/20 rounded-full"></div>
-                <Image
-                  src={basketImage}
-                  alt="Fresh Vegetables"
-                  fill
-                  className="object-contain relative z-10"
-                />
-              </div>
-            </div>
+// const CompactVegetablesBanner: React.FC<VegetablesBannerProps> = ({
+//   basketImage = "/vegetables-basket.png",
+//   title = "SUPER SALE VEGETABLES",
+//   description = "Don't Miss Out On Our Super Sale! Fresh, High-Quality Vegetables At Unbeatable Prices.",
+//   buttonText = "Shop Now",
+//   buttonLink = "/vegetables",
+// }) => {
+//   return (
+//     <section className="py-6 bg-gray-50">
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <div className="bg-gradient-to-r from-green-400 to-teal-600 rounded-xl overflow-hidden shadow-lg">
+//           <div className="grid grid-cols-1 md:grid-cols-3 items-center">
+//             {/* Image Section */}
+//             <div className="relative p-6 flex justify-center">
+//               <div className="w-32 h-32 md:w-40 md:h-40 relative">
+//                 <div className="absolute inset-0 bg-green-200/20 rounded-full"></div>
+//                 <Image
+//                   src={basketImage}
+//                   alt="Fresh Vegetables"
+//                   fill
+//                   className="object-contain relative z-10"
+//                 />
+//               </div>
+//             </div>
 
-            {/* Content Section */}
-            <div className="col-span-2 p-6 text-white">
-              <h3 className="text-xl md:text-2xl font-bold mb-3">{title}</h3>
-              <p className="text-sm md:text-base opacity-90 mb-4 leading-relaxed">
-                {description}
-              </p>
-              <Link
-                href={buttonLink}
-                className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 text-sm"
-              >
-                {buttonText}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+//             {/* Content Section */}
+//             <div className="col-span-2 p-6 text-white">
+//               <h3 className="text-xl md:text-2xl font-bold mb-3">{title}</h3>
+//               <p className="text-sm md:text-base opacity-90 mb-4 leading-relaxed">
+//                 {description}
+//               </p>
+//               <Link
+//                 href={buttonLink}
+//                 className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 text-sm"
+//               >
+//                 {buttonText}
+//                 <ArrowRight className="ml-2 h-4 w-4" />
+//               </Link>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 interface Product {
   id: number;
@@ -656,81 +650,81 @@ const PopularProducts: React.FC<PopularProductsProps> = ({
   );
 };
 
-const CompactPopularProducts: React.FC<PopularProductsProps> = ({
-  products = defaultProducts.slice(0, 6),
-  title = "POPULAR PRODUCTS",
-}) => {
-  const [wishlist, setWishlist] = useState<number[]>([]);
+// const CompactPopularProducts: React.FC<PopularProductsProps> = ({
+//   products = defaultProducts.slice(0, 6),
+//   title = "POPULAR PRODUCTS",
+// }) => {
+//   const [wishlist, setWishlist] = useState<number[]>([]);
 
-  const toggleWishlist = (productId: number) => {
-    setWishlist((prev) =>
-      prev.includes(productId)
-        ? prev.filter((id) => id !== productId)
-        : [...prev, productId]
-    );
-  };
+//   const toggleWishlist = (productId: number) => {
+//     setWishlist((prev) =>
+//       prev.includes(productId)
+//         ? prev.filter((id) => id !== productId)
+//         : [...prev, productId]
+//     );
+//   };
 
-  return (
-    <section className="py-12 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-            {title}
-          </h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
-        </div>
+//   return (
+//     <section className="py-12 bg-white">
+//       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+//         {/* Section Header */}
+//         <div className="text-center mb-10">
+//           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+//             {title}
+//           </h2>
+//           <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
+//         </div>
 
-        {/* Compact Products Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white border border-gray-200 rounded-lg p-3 hover:shadow-md transition-shadow duration-300 group relative"
-            >
-              {/* Wishlist */}
-              <button
-                onClick={() => toggleWishlist(product.id)}
-                className="absolute top-2 right-2 z-10 p-1 bg-white rounded-full shadow-sm"
-              >
-                <Heart
-                  className={`h-4 w-4 ${
-                    wishlist.includes(product.id)
-                      ? "fill-red-500 text-red-500"
-                      : "text-gray-400"
-                  }`}
-                />
-              </button>
+//         {/* Compact Products Grid */}
+//         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+//           {products.map((product) => (
+//             <div
+//               key={product.id}
+//               className="bg-white border border-gray-200 rounded-lg p-3 hover:shadow-md transition-shadow duration-300 group relative"
+//             >
+//               {/* Wishlist */}
+//               <button
+//                 onClick={() => toggleWishlist(product.id)}
+//                 className="absolute top-2 right-2 z-10 p-1 bg-white rounded-full shadow-sm"
+//               >
+//                 <Heart
+//                   className={`h-4 w-4 ${
+//                     wishlist.includes(product.id)
+//                       ? "fill-red-500 text-red-500"
+//                       : "text-gray-400"
+//                   }`}
+//                 />
+//               </button>
 
-              {/* Image */}
-              <div className="relative h-24 mb-2 bg-gray-50 rounded overflow-hidden">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+//               {/* Image */}
+//               <div className="relative h-24 mb-2 bg-gray-50 rounded overflow-hidden">
+//                 <Image
+//                   src={product.image}
+//                   alt={product.name}
+//                   fill
+//                   className="object-cover"
+//                 />
+//               </div>
 
-              {/* Info */}
-              <div className="space-y-2">
-                <h4 className="font-medium text-xs text-gray-900 line-clamp-2 min-h-[2rem]">
-                  {product.name}
-                </h4>
-                <p className="text-sm font-bold text-green-600">
-                  {product.price}
-                </p>
-                <button className="w-full bg-gray-100 hover:bg-green-600 text-gray-700 hover:text-white text-xs font-medium py-2 rounded transition-colors duration-300">
-                  Add to basket
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+//               {/* Info */}
+//               <div className="space-y-2">
+//                 <h4 className="font-medium text-xs text-gray-900 line-clamp-2 min-h-[2rem]">
+//                   {product.name}
+//                 </h4>
+//                 <p className="text-sm font-bold text-green-600">
+//                   {product.price}
+//                 </p>
+//                 <button className="w-full bg-gray-100 hover:bg-green-600 text-gray-700 hover:text-white text-xs font-medium py-2 rounded transition-colors duration-300">
+//                   Add to basket
+//                 </button>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 interface Category {
   id: number;
@@ -936,65 +930,65 @@ const ShopByCategory: React.FC<ShopByCategoryProps> = ({
 };
 
 // Alternative Compact Grid Layout
-const CompactShopByCategory: React.FC<ShopByCategoryProps> = ({
-  categories = defaultCategories.slice(0, 8),
-  title = "SHOP BY CATEGORY",
-}) => {
-  return (
-    <section className="py-12 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-            {title}
-          </h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
-        </div>
+// const CompactShopByCategory: React.FC<ShopByCategoryProps> = ({
+//   categories = defaultCategories.slice(0, 8),
+//   title = "SHOP BY CATEGORY",
+// }) => {
+//   return (
+//     <section className="py-12 bg-gray-50">
+//       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+//         {/* Section Header */}
+//         <div className="text-center mb-10">
+//           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+//             {title}
+//           </h2>
+//           <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
+//         </div>
 
-        {/* Compact Categories Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={`/category/${category.slug}`}
-              className="group block"
-            >
-              <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-                {/* Image */}
-                <div className="relative h-24 bg-gray-50 overflow-hidden">
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
+//         {/* Compact Categories Grid */}
+//         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+//           {categories.map((category) => (
+//             <Link
+//               key={category.id}
+//               href={`/category/${category.slug}`}
+//               className="group block"
+//             >
+//               <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+//                 {/* Image */}
+//                 <div className="relative h-24 bg-gray-50 overflow-hidden">
+//                   <Image
+//                     src={category.image}
+//                     alt={category.name}
+//                     fill
+//                     className="object-cover group-hover:scale-105 transition-transform duration-300"
+//                   />
+//                 </div>
 
-                {/* Category Name */}
-                <div className="p-3">
-                  <div className="bg-green-700 text-white text-center py-1.5 px-2 rounded text-xs font-medium">
-                    {category.name}
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+//                 {/* Category Name */}
+//                 <div className="p-3">
+//                   <div className="bg-green-700 text-white text-center py-1.5 px-2 rounded text-xs font-medium">
+//                     {category.name}
+//                   </div>
+//                 </div>
+//               </div>
+//             </Link>
+//           ))}
+//         </div>
 
-        {/* View More */}
-        <div className="text-center mt-8">
-          <Link
-            href="/categories"
-            className="text-green-700 hover:text-green-800 font-medium text-sm flex items-center justify-center"
-          >
-            View All Categories
-            <ArrowRight className="ml-1 h-4 w-4" />
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-};
+//         {/* View More */}
+//         <div className="text-center mt-8">
+//           <Link
+//             href="/categories"
+//             className="text-green-700 hover:text-green-800 font-medium text-sm flex items-center justify-center"
+//           >
+//             View All Categories
+//             <ArrowRight className="ml-1 h-4 w-4" />
+//           </Link>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 const EcommerceBrandLayout = () => {
   const brands = [
