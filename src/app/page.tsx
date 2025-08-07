@@ -583,7 +583,8 @@ const PopularProducts: React.FC<PopularProductsProps> = ({
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product) => (
-            <div
+            <Link
+              href="/productView"
               key={product.id}
               className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group border border-gray-200"
             >
@@ -635,7 +636,7 @@ const PopularProducts: React.FC<PopularProductsProps> = ({
                   </button>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
