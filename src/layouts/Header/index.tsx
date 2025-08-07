@@ -76,7 +76,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="font-medium text-black">
                   Your Daily Newscast
                 </div>
-                <div className="text-black">+8179476400</div>
+                <div className="text-black">+41794750809</div>
               </div>
             </div>
 
