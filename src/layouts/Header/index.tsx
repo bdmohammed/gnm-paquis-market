@@ -47,132 +47,119 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Content can go here if needed */}
       </div>
       {/* Top Bar */}
-      <div className="text-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Link href="/" className="flex-shrink-0">
-                <Image
-                  src={gnmLogo}
-                  alt="GNM"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto"
-                />
-              </Link>
-            </div>
+      <div className="bg-white text-black">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-between h-24">
+      {/* Logo */}
+      <div className="flex items-center">
+        <Link href="/" className="flex-shrink-0">
+          <Image
+            src={gnmLogo}
+            alt="GNM"
+            width={120}
+            height={40}
+            className="h-12 w-auto"
+          />
+        </Link>
+      </div>
 
-            {/* Contact Info */}
-            <div className="hidden md:flex items-center text-white">
-              <Image
-                src={callIcon}
-                alt="Call"
-                width={20}
-                height={20}
-                className="mr-2"
-              />
-              <div className="text-sm">
-                <div className="font-medium text-black">
-                  Your Daily Newscast
-                </div>
-                <div className="text-black">+41794750809</div>
-              </div>
-            </div>
-
-            {/* Search Bar */}
-            <div className="flex-1 max-w-lg mx-8 hidden md:block">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search entire store here..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-4 py-2 pr-12 text-gray-900 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                />
-                <button className="absolute right-0 top-0 h-full px-4 bg-green-600 text-white rounded-r-md hover:bg-green-700 transition-colors">
-                  <Search className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-
-            {/* User Actions */}
-            <div className="flex items-center space-x-4">
-              {/* Wishlist */}
-              <Link
-                href="/wishlist"
-                className="text-white hover:text-green-200 transition-colors"
-              >
-                <div className="flex flex-col items-center">
-                  <Image
-                    src={wishlistIcon}
-                    alt="Wishlist"
-                    width={24}
-                    height={24}
-                    className="mb-1"
-                  />
-                  <span className="text-xs text-black hidden sm:block">
-                    Wishlist
-                  </span>
-                </div>
-              </Link>
-
-              {/* Cart */}
-              <Link
-                href="/cart"
-                className="text-white hover:text-green-200 transition-colors"
-              >
-                <div className="flex flex-col items-center relative">
-                  <Image
-                    src={cartIcon}
-                    alt="Cart"
-                    width={24}
-                    height={24}
-                    className="mb-1"
-                  />
-                  <span className="text-xs text-black hidden sm:block">
-                    My Cart
-                  </span>
-                  {/* <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    0
-                  </span> */}
-                </div>
-              </Link>
-
-              {/* Account */}
-              <Link
-                href="/account"
-                className="text-white hover:text-green-200 transition-colors"
-              >
-                <div className="flex flex-col items-center">
-                  <Image
-                    src={userIcon}
-                    alt="Account"
-                    width={24}
-                    height={24}
-                    className="mb-1"
-                  />
-                  <span className="text-xs hidden  text-black sm:block">
-                    Account
-                  </span>
-                </div>
-              </Link>
-
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="md:hidden text-white hover:text-green-200"
-              >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
-          </div>
+      {/* Contact Info */}
+      <div className="hidden md:flex items-center">
+        <Image
+          src={callIcon}
+          alt="Call"
+          width={22}
+          height={22}
+          className="mr-2"
+        />
+        <div className="text-sm leading-tight">
+          <div className="font-medium text-black">Your Daily Needs!</div>
+          <div className="text-black font-bold">+41794750809</div>
         </div>
       </div>
+
+      {/* Search Bar */}
+      <div className="flex-1 max-w-md mx-8 hidden md:block">
+        <div className="flex w-full">
+          <input
+            type="text"
+            placeholder="Search entire store here..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="flex-1 px-4 py-2 text-gray-900 bg-white border border-black rounded-l-full focus:outline-none focus:ring-2 focus:ring-[#115530]"
+          />
+          <button className="px-8 bg-[#115530] font-medium rounded-r-full hover:bg-green-800 transition-colors text-[#FCB44D]">
+            Search
+          </button>
+        </div>
+      </div>
+
+      {/* User Actions */}
+      <div className="flex items-center space-x-6">
+        {/* Wishlist */}
+        <Link href="/wishlist" className="transition-colors">
+          <div className="flex flex-col items-center">
+            <Image
+              src={wishlistIcon}
+              alt="Wishlist"
+              width={28}
+              height={28}
+              className="mb-1"
+            />
+            <span className="text-xs text-black hidden sm:block">
+              Wishlist
+            </span>
+          </div>
+        </Link>
+
+        {/* Cart */}
+        <Link href="/cart" className="transition-colors">
+          <div className="flex flex-col items-center relative">
+            <Image
+              src={cartIcon}
+              alt="Cart"
+              width={28}
+              height={28}
+              className="mb-1"
+            />
+            <span className="text-xs text-black hidden sm:block">
+              My Cart
+            </span>
+          </div>
+        </Link>
+
+        {/* Account */}
+        <Link href="/account" className="transition-colors">
+          <div className="flex flex-col items-center">
+            <Image
+              src={userIcon}
+              alt="Account"
+              width={28}
+              height={28}
+              className="mb-1"
+            />
+            <span className="text-xs text-black hidden sm:block">
+              Account
+            </span>
+          </div>
+        </Link>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden"
+        >
+          {isMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Navigation Bar */}
       <nav className="bg-green-800">

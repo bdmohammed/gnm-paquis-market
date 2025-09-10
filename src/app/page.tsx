@@ -32,19 +32,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8 z-10 relative">
+          <div className="space-y-4 z-10 relative">
             {/* Grand Opening Badge */}
             <div className="inline-block">
-              <span className="bg-green-700 text-white px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wide">
+              <span className="text-[#115530] py-2 text-4xl font-semibold tracking-wide">
                 Grand Opening
               </span>
             </div>
 
             {/* Main Heading */}
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                The Best Geneva
-                <span className="text-green-700 block">Grocery</span>
+              <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold text-gray-900 leading-tight">
+                The Best Indian Grocery
               </h1>
 
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg">
@@ -57,10 +56,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="pt-4">
               <Link
                 href="/shop"
-                className="inline-flex items-center bg-orange-400 hover:bg-orange-500 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center bg-[#FCB44D] text-[#115530] font-semibold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
-                <ShoppingBag className="mr-2 h-5 w-5" />
-                Shop Now
+                Shop Now <ShoppingBag className="ml-2 h-5 w-5" />
               </Link>
             </div>
 
@@ -219,53 +217,35 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-black tracking-wide">
             FEATURED PRODUCTS
           </h2>
-          <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
         </div>
 
-        {/* Products Container */}
+        {/* Products Carousel */}
         <div className="relative">
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200"
-            disabled={currentIndex === 0}
-          >
-            <ChevronLeft className="h-6 w-6 text-gray-600" />
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200"
-            disabled={currentIndex + itemsPerPage.desktop >= products.length}
-          >
-            <ChevronRight className="h-6 w-6 text-gray-600" />
-          </button>
-
-          {/* Products Grid */}
-          <div className="overflow-hidden mx-12">
+          {/* Products Wrapper */}
+          <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-300 ease-in-out"
               style={{
-                transform: `translateX(-${
-                  currentIndex * (100 / itemsPerPage.desktop)
-                }%)`,
+                transform: `translateX(-${currentIndex * (100 / itemsPerPage.desktop)}%)`,
               }}
             >
               {products.map((product) => (
                 <div
                   key={product.id}
-                  className="w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 px-3"
+                  className="w-1/6 flex-shrink-0 px-2"
                 >
-                  <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 group relative">
-                    {/* Wishlist Button */}
+                  <div className="relative bg-white border border-gray-200 rounded-md shadow-md hover:shadow-lg p-4 flex flex-col text-center h-full">
+                    
+                    {/* Wishlist Icon (for ALL cards) */}
                     <button
                       onClick={() => toggleWishlist(product.id)}
-                      className="absolute top-6 right-6 z-10 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+                      className="absolute top-3 right-3 p-1 bg-white rounded-full border border-gray-200 shadow-sm hover:shadow-md"
                     >
                       <Heart
                         className={`h-5 w-5 ${
@@ -277,58 +257,54 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
                     </button>
 
                     {/* Product Image */}
-                    <div className="relative h-48 mb-4 bg-gray-50 rounded-lg overflow-hidden">
+                    <div className="relative h-40 w-full mb-4 flex items-center justify-center">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-contain p-2"
                       />
                     </div>
 
                     {/* Product Info */}
-                    <div className="space-y-3">
-                      <h3 className="font-semibold text-sm text-gray-900 line-clamp-2 min-h-[2.5rem]">
-                        {product.name}
-                      </h3>
+                    <h3 className="font-bold text-xs uppercase text-black mb-2 min-h-[2.5rem] flex items-center justify-center">
+                      {product.name}
+                    </h3>
 
-                      <div className="flex items-center justify-between">
-                        <span className="text-lg font-bold text-green-600">
-                          {product.price}
-                        </span>
-                      </div>
+                    <span className="text-sm font-semibold text-black mb-4">
+                      {product.price}
+                    </span>
 
-                      {/* Add to Cart Button */}
-                      <button
-                        onClick={() => addToCart(product)}
-                        className="w-full bg-gray-100 hover:bg-green-600 text-gray-700 hover:text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
-                      >
-                        <ShoppingCart className="h-4 w-4" />
-                        <span>Add to basket</span>
-                      </button>
-                    </div>
+                    {/* Add to Basket Button */}
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="mt-auto w-full border border-black text-black text-sm py-2 rounded-md hover:bg-black hover:text-white transition-all"
+                    >
+                      Add to basket
+                    </button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Dots Indicator */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {Array.from({
-            length: Math.ceil(products.length / itemsPerPage.desktop),
-          }).map((_, index) => (
+          {/* Navigation Arrows */}
+          <div className="flex justify-center mt-6 space-x-3">
             <button
-              key={index}
-              onClick={() => setCurrentIndex(index * itemsPerPage.desktop)}
-              className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                Math.floor(currentIndex / itemsPerPage.desktop) === index
-                  ? "bg-blue-500"
-                  : "bg-gray-300"
-              }`}
-            />
-          ))}
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+              className="border border-gray-400 p-2 rounded-sm hover:bg-gray-100 disabled:opacity-50"
+            >
+              <ChevronLeft className="h-4 w-4 text-black" />
+            </button>
+            <button
+              onClick={nextSlide}
+              disabled={currentIndex + itemsPerPage.desktop >= products.length}
+              className="border border-gray-400 p-2 rounded-sm hover:bg-gray-100 disabled:opacity-50"
+            >
+              <ChevronRight className="h-4 w-4 text-black" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -570,84 +546,77 @@ const PopularProducts: React.FC<PopularProductsProps> = ({
   };
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {title}
-          </h2>
-          <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <Link
-              href="/productView"
-              key={product.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden group border border-gray-200"
-            >
-              {/* Product Card */}
-              <div className="relative p-4">
-                {/* Wishlist Button */}
-                <button
-                  onClick={() => toggleWishlist(product.id)}
-                  className="absolute top-6 right-6 z-10 p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300"
-                >
-                  <Heart
-                    className={`h-5 w-5 ${
-                      wishlist.includes(product.id)
-                        ? "fill-red-500 text-red-500"
-                        : "text-gray-400 hover:text-red-400"
-                    }`}
-                  />
-                </button>
-
-                {/* Product Image */}
-                <div className="relative h-48 mb-4 bg-gray-50 rounded-lg overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Product Info */}
-                <div className="space-y-3">
-                  <h3 className="font-medium text-sm text-gray-900 line-clamp-2 min-h-[2.5rem] leading-tight">
-                    {product.name}
-                  </h3>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-green-600">
-                      {product.price}
-                    </span>
-                  </div>
-
-                  {/* Add to Cart Button */}
-                  <button
-                    onClick={() => addToCart(product)}
-                    className="w-full bg-gray-100 hover:bg-green-600 text-gray-700 hover:text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 border border-gray-200 hover:border-green-600"
-                  >
-                    <ShoppingCart className="h-4 w-4" />
-                    <span>Add to basket</span>
-                  </button>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* View More Button */}
-        <div className="text-center mt-12">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
-            View All Products
-          </button>
-        </div>
+    <section className="py-16 bg-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Section Header */}
+      <div className="text-center mb-10">
+        <h2 className="text-2xl md:text-3xl font-bold text-black tracking-wide">
+          POPULAR PRODUCTS
+        </h2>
       </div>
-    </section>
+  
+      {/* Products Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="relative bg-white border border-gray-200 rounded-md shadow-md hover:shadow-lg p-4 flex flex-col text-center h-full"
+          >
+            {/* Wishlist Icon */}
+            <button
+              onClick={() => toggleWishlist(product.id)}
+              className="absolute top-3 right-3 p-1 bg-white rounded-full border border-gray-200 shadow-sm hover:shadow-md"
+            >
+              <Heart
+                className={`h-5 w-5 ${
+                  wishlist.includes(product.id)
+                    ? "fill-red-500 text-red-500"
+                    : "text-gray-400"
+                }`}
+              />
+            </button>
+  
+            {/* Product Image */}
+            <div className="relative h-40 w-full mb-4 flex items-center justify-center">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-contain p-2"
+              />
+            </div>
+  
+            {/* Product Info */}
+            <h3 className="font-bold text-xs uppercase text-black mb-2 min-h-[2.5rem] flex items-center justify-center">
+              {product.name}
+            </h3>
+  
+            <span className="text-sm font-semibold text-black mb-4">
+              {product.price}
+            </span>
+  
+            {/* Add to Basket Button */}
+            <button
+              onClick={() => addToCart(product)}
+              className="mt-auto w-full border border-black text-black text-sm py-2 rounded-md hover:bg-black hover:text-white transition-all"
+            >
+              Add to basket
+            </button>
+          </div>
+        ))}
+      </div>
+  
+      {/* View More Button */}
+      <div className="text-center mt-12">
+        <button className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg">
+          View All Products
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  
   );
 };
 
@@ -861,72 +830,62 @@ const ShopByCategory: React.FC<ShopByCategoryProps> = ({
 }) => {
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {title}
-          </h2>
-          <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
-        </div>
-
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={`/category/${category.slug}`}
-              className="group block"
-            >
-              <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                {/* Category Image */}
-                <div className="relative h-40 bg-gray-50 overflow-hidden">
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 flex items-center justify-center">
-                    <ArrowRight className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-
-                {/* Category Info */}
-                <div className="p-4">
-                  <div className="bg-green-700 text-white text-center py-2 px-3 rounded">
-                    <h3 className="font-medium text-sm leading-tight">
-                      {category.name}
-                    </h3>
-                  </div>
-
-                  {category.productCount && (
-                    <div className="text-center mt-2">
-                      <span className="text-xs text-gray-500">
-                        {category.productCount} products
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* View All Categories Button */}
-        <div className="text-center mt-12">
-          <Link
-            href="/categories"
-            className="inline-flex items-center bg-green-700 hover:bg-green-800 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
-          >
-            <span className="mr-2">View All Categories</span>
-            <ArrowRight className="h-5 w-5" />
-          </Link>
-        </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* Section Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-2xl md:text-3xl font-bold text-black">
+          SHOP BY CATEGORY
+        </h2>
       </div>
-    </section>
+  
+      {/* Categories Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {categories.map((category) => (
+          <Link
+            key={category.id}
+            href={`/category/${category.slug}`}
+            className="group block"
+          >
+            <div className="bg-white border border-gray-200 rounded-md shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+              
+              {/* Category Image */}
+              <div className="relative h-40 w-full flex items-center justify-center p-4">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+  
+              {/* Space between image and name bar */}
+              <div className="h-3 bg-white"></div>
+  
+              {/* Category Name Bar */}
+              <div className="bg-[#115530] text-[#FCB44D] text-center py-2">
+                <h3 className="font-semibold text-sm leading-tight">
+                  {category.name}
+                </h3>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+  
+      {/* View All Categories Button */}
+      {/* <div className="text-center mt-12">
+        <Link
+          href="/categories"
+          className="inline-flex items-center bg-[#115530] hover:bg-[#0d4427] text-[#FCB44D] font-semibold px-8 py-3 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+        >
+          <span className="mr-2">View All Categories</span>
+          <ArrowRight className="h-5 w-5" />
+        </Link>
+      </div> */}
+    </div>
+  </section>
+
   );
 };
 
@@ -1068,53 +1027,63 @@ const EcommerceBrandLayout = () => {
       </div>
 
       {/* Reviews Section */}
-      <div className="bg-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center">
-              <div className="text-2xl font-bold text-gray-800 mr-4">
-                EXCELLENT
-              </div>
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
+      <div className="bg-gray-100 py-12"> {/* Full-width grey background */}
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-12 gap-6 items-center">
+            {/* Left Section */}
+            <div className="col-span-12 md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
+              <div className="text-xl font-bold text-gray-800">EXCELLENT</div>
+              <div className="flex items-center mt-2">
+                {[...Array(4)].map((_, i) => (
                   <Star
                     key={i}
-                    className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                    className="w-6 h-6 fill-yellow-400 text-yellow-400"
                   />
                 ))}
+                <Star className="w-6 h-6 text-yellow-400" /> {/* half star placeholder */}
               </div>
+              <p className="text-gray-600 text-sm mt-2">
+                Based on <span className="font-semibold">42 reviews</span>
+              </p>
+              <span className="text-blue-600 font-semibold text-lg mt-2">Google</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+
+            {/* Right Section (Reviews + Arrows) */}
+            <div className="col-span-12 md:col-span-9 relative">
+              {/* Left Arrow */}
+              <button className="absolute -left-6 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-white hover:bg-gray-200 shadow">
                 <ChevronLeft className="w-5 h-5 text-gray-600" />
               </button>
-              <button className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                <ChevronRight className="w-5 h-5 text-gray-600" />
-              </button>
-            </div>
-          </div>
 
-          <div className="text-sm text-gray-600 mb-6">Based on 42 reviews</div>
-          <div className="flex items-center mb-8">
-            <span className="text-blue-600 font-semibold mr-2">Google</span>
-          </div>
-
-          {/* Review Cards */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {reviews.map((review, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg">
-                <div className="flex items-center mb-4">
-                  <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
-                    {review.initial}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-800">
-                      {review.name}
+              {/* Review Cards */}
+              <div className="grid md:grid-cols-3 gap-6">
+                {reviews.map((review, index) => (
+                  <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="flex items-center mb-4">
+                      {/* Static grey avatar */}
+                      <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold mr-3">
+                        {review.initial}
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-800 flex items-center">
+                          {review.name}
+                          <span className="ml-1 text-blue-500 text-xs">✔</span>
+                        </div>
+                        <div className="text-xs text-gray-500">{review.date}</div>
+                      </div>
+                      <span className="ml-auto text-gray-400">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M21.35 11.1h-9.64v2.91h5.64c-.24 1.44-1.69 4.23-5.64 4.23-3.39 0-6.16-2.8-6.16-6.24 0-3.44 2.77-6.24 6.16-6.24 1.93 0 3.22.82 3.96 1.52l2.71-2.63c-1.71-1.6-3.93-2.57-6.67-2.57-5.46 0-9.9 4.46-9.9 9.92 0 5.46 4.44 9.92 9.9 9.92 5.71 0 9.5-4.01 9.5-9.65 0-.65-.07-1.14-.16-1.57z" />
+                        </svg>
+                      </span>
                     </div>
-                    <div className="text-sm text-gray-500">{review.date}</div>
-                  </div>
-                  <div className="ml-auto">
-                    <div className="flex">
+                    <div className="flex mb-2">
                       {[...Array(review.rating)].map((_, i) => (
                         <Star
                           key={i}
@@ -1122,16 +1091,21 @@ const EcommerceBrandLayout = () => {
                         />
                       ))}
                     </div>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      {review.text}
+                    </p>
+                    <button className="text-gray-500 text-sm mt-2 hover:underline">
+                      Read more
+                    </button>
                   </div>
-                </div>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  {review.text}
-                </p>
-                <button className="text-blue-600 text-sm mt-2 hover:underline">
-                  Read more
-                </button>
+                ))}
               </div>
-            ))}
+
+              {/* Right Arrow */}
+              <button className="absolute -right-6 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-white hover:bg-gray-200 shadow">
+                <ChevronRight className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
